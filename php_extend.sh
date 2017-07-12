@@ -14,14 +14,14 @@ redis_server_dir="redis-3.0.7"
 redis_server_name="redis" 
 redis_server_path="/usr/local/redis"
 local_pwd=`pwd`
-redis_tar_gz="redis-2.2.7.tgz" 
-redis_dir="redis-2.2.7" 
+redis_tar_gz="redis-3.1.2.tgz" 
+redis_dir="redis-3.1.2" 
 redis_name="redis" 
 ImageMagick_tar_gz="ImageMagick.tar.gz" 
 ImageMagick_dir="ImageMagick-6.8.9-7" 
 ImageMagick_name="ImageMagick" 
-imagick_tar_gz="imagick-3.4.2.tgz" 
-imagick_dir="imagick-3.4.2" 
+imagick_tar_gz="imagick-3.4.3.tgz" 
+imagick_dir="imagick-3.4.3" 
 imagick_name="imagick" 
 
 ##### igbinary安装
@@ -37,7 +37,7 @@ then
 	${phpize_path}
 	./configure --with-php-config=${php_config_path}
 	make && make install
-	echo "extensions=igbinary.so" >> ${php_ini_path}
+	echo "extension=igbinary.so" >> ${php_ini_path}
 	echo "${date_show_str} ----- 成功安装igbinary -----"
 	echo "${date_show_str} ----- 成功安装igbinary -----" >> ${server_install_log_path}
 	##### 返回上一目录
@@ -89,7 +89,7 @@ then
 	${phpize_path}
 	./configure --with-php-config=${php_config_path}
 	make && make install
-	echo "extensions=redis.so" >> ${php_ini_path}
+	echo "extension=redis.so" >> ${php_ini_path}
 	echo "${date_show_str} ----- 成功安装redis -----"
 	echo "${date_show_str} ----- 成功安装redis -----" >> ${server_install_log_path}
 	##### 返回上一目录
@@ -136,7 +136,7 @@ then
 	${phpize_path}
 	./configure --with-imagick=/usr/local/${ImageMagick_name}/
 	make && make install
-	echo "extensions=imagick.so" >> ${php_ini_path}
+	echo "extension=imagick.so" >> ${php_ini_path}
 	echo "${date_show_str} ----- 成功安装imagick -----"
 	echo "${date_show_str} ----- 成功安装imagick -----" >> ${server_install_log_path}
 	##### 返回上一目录
@@ -149,6 +149,6 @@ else
 fi
 
 ##### kill掉进程
-pkill -9 -f "php-fpm"
+pkill -9 -f "php-fpm" && /etc/init.d/php-fpm
 ##### 重新启动
-/etc/init.d/php-fpm
+##### /etc/init.d/php-fpm
