@@ -13,8 +13,8 @@
 ##### 引入php.sh
 ./php.sh
 ##### 三、安装php扩展
-##### 引入php_extend.sh 有问题，先手动安装
-##### ./php_extend.sh
+##### 引入php_extend.sh 
+./php_extend.sh
 ##### 四、安装mysql
 ##### 此处用开箱即用安装方法，不用源码安装，详情请看mysql.txt
 

@@ -13,14 +13,26 @@ tar zxvf mysql-5.7.18-linux-glibc2.5-x86_64.tar.gz
 mv mysql-5.7.18-linux-glibc2.5-x86_64 /usr/local/mysql
 数据仓库目录
 mkdir -p /usr/local/mysql/data
+mkdir -p /usr/local/mysql/log
+mkdir -p /usr/local/mysql/binlog/
+mkdir -p /usr/local/mysql/relaylog/
 chown –R mysql:mysql /usr/local/mysql/ 
 设置变量环境
 	echo "PATH=$PATH:/usr/local/mysql/bin" >> /etc/profile
 	export PATH=$PATH:/usr/local/mysql/bin
 配置参数
-/usr/local/mysql/bin/mysqld --initialize --user=mysql --basedir=/usr/local/mysql --datadir=/usr/local/mysql/data
+	/usr/local/mysql/bin/mysqld --initialize --user=mysql --basedir=/usr/local/mysql --datadir=/usr/local/mysql/data
+	--datadir=/home/mysql --basedir=/usr/local/mysql  --defaults-file=/etc/my.cnf --user=mysql
 此处需要注意记录生成的临时密码，如上文：YLi>7ecpe;YP
+7:usoAQub?T,
 /usr/local/mysql/bin/mysql_ssl_rsa_setup --datadir=/usr/local/mysql/data
+设置启动脚本变量 
+	cp ./support-files/mysql.server /etc/rc.d/init.d/mysqld
+	chmod 755 /etc/rc.d/init.d/mysqld
+	chkconfig --add mysqld
+	vim /etc/rc.d/init.d/mysqld
+	basedir=/usr/local/mysql
+	datadir=/usr/local/mysql/data
 修改配置
  cp /usr/local/mysql/support-files/my-default.cnf /etc/my.cnf
  cp /usr/local/mysql/support-files/mysql.server /etc/init.d/mysql
@@ -123,9 +135,12 @@ chown –R mysql:mysql /usr/local/mysql/
 	quick
 	max_allowed_packet = 32M
 启动mysql
-	mysqld_safe --skip-grant-tables&
-	service mysqld start
-	###/usr/local/mysql/bin/mysqld_safe --user=mysql &
+	###要切换mysql用户
+	##mysqld_safe --skip-grant-tables&
+	##service mysqld start
+	chown -R root:mysql /usr/local/mysql
+	chmod 771 -R /usr/local/mysql
+	/usr/local/mysql/bin/mysqld_safe --user=mysql&
 	
 修改密码
 	/usr/local/mysql/bin/mysql --user=root –p

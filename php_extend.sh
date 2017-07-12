@@ -57,10 +57,10 @@ then
 	echo "${date_show_str} ----- 解压${redis_server_tar_gz} -----"
 	echo "${date_show_str} ----- 解压${redis_server_tar_gz} -----" >> ${server_install_log_path}
 	tar zxvf ${redis_server_tar_gz}
-	cp -r ${redis_server_dir} ${redis_server_path} 
+	cp -rf ${redis_server_dir} ${redis_server_path} 
 	cd ${redis_server_path}
 	make && make install
-	cp redis.conf /etc/
+	cp -rf redis.conf /etc/
 	##### 将redis添加到自启动中  
 	echo "/usr/local/bin/redis-server /etc/redis.conf" >> /etc/rc.d/rc.local
 	##### 启动redis  先不要启动，还要修改配置才可以启动
