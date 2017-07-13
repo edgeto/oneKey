@@ -37,7 +37,7 @@ then
 	${phpize_path}
 	./configure --with-php-config=${php_config_path}
 	make && make install
-	echo "extension=igbinary.so" >> ${php_ini_path}
+	echo -e "\nextension=igbinary.so" >> ${php_ini_path}
 	echo "${date_show_str} ----- 成功安装igbinary -----"
 	echo "${date_show_str} ----- 成功安装igbinary -----" >> ${server_install_log_path}
 	##### 返回上一目录
@@ -89,7 +89,7 @@ then
 	${phpize_path}
 	./configure --with-php-config=${php_config_path}
 	make && make install
-	echo "extension=redis.so" >> ${php_ini_path}
+	echo -e "\nextension=redis.so" >> ${php_ini_path}
 	echo "${date_show_str} ----- 成功安装redis -----"
 	echo "${date_show_str} ----- 成功安装redis -----" >> ${server_install_log_path}
 	##### 返回上一目录
@@ -136,7 +136,7 @@ then
 	${phpize_path}
 	./configure --with-imagick=/usr/local/${ImageMagick_name}/
 	make && make install
-	echo "extension=imagick.so" >> ${php_ini_path}
+	echo -e "\nextension=imagick.so" >> ${php_ini_path}
 	echo "${date_show_str} ----- 成功安装imagick -----"
 	echo "${date_show_str} ----- 成功安装imagick -----" >> ${server_install_log_path}
 	##### 返回上一目录
