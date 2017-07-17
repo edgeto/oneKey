@@ -3,3 +3,6 @@
 + 上传所有文件到linux服务器目录
 + 给dos2unix.sh加上执行权限
 + chmod +x dos2unix.sh
++ 然后执行安装
++ ./server.sh
++ 安装日志在/tmp/server_install.log
