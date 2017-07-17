@@ -3,6 +3,8 @@
 ##### 系统平台：CentOS
 ##### vim编辑器打开脚本, 运行::set ff?可以看到DOS或UNIX的字样. 使用set ff=unix把它强制为unix格式的, 然后存盘退出, 即可.
 ##### 网上也有很多的其他方法, 比如: 执行dos2unix 命令转换编码, 命令为: #dos2unix server.sh
+##### 转换编码
+./dos2unix.sh	
 ##### 一键安装PHP7环境
 ##### 安装日志path
 ##### server_install_path="/tmp/server_install.log"
