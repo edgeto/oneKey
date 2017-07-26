@@ -134,7 +134,7 @@ then
 	cd ${imagick_dir}
 	##### phpize
 	${phpize_path}
-	./configure --with-imagick=/usr/local/${ImageMagick_name}/
+	./configure --with-imagick=/usr/local/${ImageMagick_name}/ --with-php-config=${php_config_path}
 	make && make install
 	echo -e "\nextension=imagick.so" >> ${php_ini_path}
 	echo "${date_show_str} ----- 成功安装imagick -----"
