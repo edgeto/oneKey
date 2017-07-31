@@ -84,3 +84,6 @@ make install
 
 /etc/init.d/php-fpm restart
 
+
+redis 后台启动，改redis.conf 
+daemonize yes
