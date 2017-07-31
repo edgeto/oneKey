@@ -62,7 +62,7 @@ then
 	make && make install
 	cp -rf redis.conf /etc/
 	##### 将redis添加到自启动中  
-	echo "/usr/local/bin/redis-server /etc/redis.conf" >> /etc/rc.d/rc.local
+	echo "/usr/local/bin/redis-server /etc/redis.conf &" >> /etc/rc.d/rc.local
 	##### 启动redis  先不要启动，还要修改配置才可以启动
 	##### redis-server /etc/redis.conf
 	echo "${date_show_str} ----- 成功安装redis_server -----"
