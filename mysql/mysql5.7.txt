@@ -30,6 +30,7 @@ You must reset your password using ALTER USER statement before executing this st
 so
 SET PASSWORD = PASSWORD('new_password');
 grant all privileges on *.* to root@'%' identified by 'A123456';
+grant all privileges on *.* to 用户名@'%' identified by '密码' with grant option;
 flush privileges;
 启动：service mysqld start
 停止：service mysqld stop
