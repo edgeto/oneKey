@@ -1,39 +1,39 @@
-MysqlÄ¿Â¼°²×°Î»ÖÃ£º/usr/local/mysql
-Êı¾İ¿â±£´æÎ»ÖÃ£º/usr/local/mysql/data
-ÈÕÖ¾±£´æÎ»ÖÃ£º/usr/local/mysql/log
-É¾³ı¾É°²×°°ü
+Mysqlç›®å½•å®‰è£…ä½ç½®ï¼š/usr/local/mysql
+æ•°æ®åº“ä¿å­˜ä½ç½®ï¼š/usr/local/mysql/data
+æ—¥å¿—ä¿å­˜ä½ç½®ï¼š/usr/local/mysql/log
+åˆ é™¤æ—§å®‰è£…åŒ…
 	rpm -qa|grep -i mysql
 	yum -y remove mysql-libs-5.1.66-2.el6_3.x86_64
-°²×°Ïà¹Ø¿âÎÄ¼ş
+å®‰è£…ç›¸å…³åº“æ–‡ä»¶
 	yum -y install gcc gcc-c++ make autoconf libtool-ltdl-devel gd-devel freetype-devel libxml2-devel libjpeg-devel libpng-devel openssl-devel curl-devel bison patch unzip libmcrypt-devel libmhash-devel ncurses-devel sudo bzip2 flex libaio-devel
 	
 /usr/sbin/groupadd mysql
 /usr/sbin/useradd -g mysql mysql
 tar zxvf mysql-5.7.18-linux-glibc2.5-x86_64.tar.gz
 mv mysql-5.7.18-linux-glibc2.5-x86_64 /usr/local/mysql
-Êı¾İ²Ö¿âÄ¿Â¼
+æ•°æ®ä»“åº“ç›®å½•
 mkdir -p /usr/local/mysql/data
 mkdir -p /usr/local/mysql/log
 mkdir -p /usr/local/mysql/binlog/
 mkdir -p /usr/local/mysql/relaylog/
-chown ¨CR mysql:mysql /usr/local/mysql/ 
-ÉèÖÃ±äÁ¿»·¾³
+chown â€“R mysql:mysql /usr/local/mysql/ 
+è®¾ç½®å˜é‡ç¯å¢ƒ
 	echo "PATH=$PATH:/usr/local/mysql/bin" >> /etc/profile
 	export PATH=$PATH:/usr/local/mysql/bin
-ÅäÖÃ²ÎÊı
+é…ç½®å‚æ•°
 	/usr/local/mysql/bin/mysqld --initialize --user=mysql --basedir=/usr/local/mysql --datadir=/usr/local/mysql/data
 	--datadir=/home/mysql --basedir=/usr/local/mysql  --defaults-file=/etc/my.cnf --user=mysql
-´Ë´¦ĞèÒª×¢Òâ¼ÇÂ¼Éú³ÉµÄÁÙÊ±ÃÜÂë£¬ÈçÉÏÎÄ£ºYLi>7ecpe;YP
+æ­¤å¤„éœ€è¦æ³¨æ„è®°å½•ç”Ÿæˆçš„ä¸´æ—¶å¯†ç ï¼Œå¦‚ä¸Šæ–‡ï¼šYLi>7ecpe;YP
 7:usoAQub?T,
 /usr/local/mysql/bin/mysql_ssl_rsa_setup --datadir=/usr/local/mysql/data
-ÉèÖÃÆô¶¯½Å±¾±äÁ¿ 
+è®¾ç½®å¯åŠ¨è„šæœ¬å˜é‡ 
 	cp ./support-files/mysql.server /etc/rc.d/init.d/mysqld
 	chmod 755 /etc/rc.d/init.d/mysqld
 	chkconfig --add mysqld
 	vim /etc/rc.d/init.d/mysqld
 	basedir=/usr/local/mysql
 	datadir=/usr/local/mysql/data
-ĞŞ¸ÄÅäÖÃ
+ä¿®æ”¹é…ç½®
  cp /usr/local/mysql/support-files/my-default.cnf /etc/my.cnf
  cp /usr/local/mysql/support-files/mysql.server /etc/init.d/mysql
  vim /etc/my.cnf
@@ -134,20 +134,30 @@ chown ¨CR mysql:mysql /usr/local/mysql/
 	[mysqldump]
 	quick
 	max_allowed_packet = 32M
-Æô¶¯mysql
-	###ÒªÇĞ»»mysqlÓÃ»§
+å¯åŠ¨mysql
+	###è¦åˆ‡æ¢mysqlç”¨æˆ·
 	##mysqld_safe --skip-grant-tables&
 	##service mysqld start
 	chown -R root:mysql /usr/local/mysql
 	chmod 771 -R /usr/local/mysql
 	/usr/local/mysql/bin/mysqld_safe --user=mysql&
 	
-ĞŞ¸ÄÃÜÂë
-	/usr/local/mysql/bin/mysql --user=root ¨Cp
-	ÊäÈëµÚ6²½Éú³ÉµÄÁÙÊ±ÃÜÂë
+ä¿®æ”¹å¯†ç 
+	/usr/local/mysql/bin/mysql --user=root â€“p
+	è¾“å…¥ç¬¬6æ­¥ç”Ÿæˆçš„ä¸´æ—¶å¯†ç 
+	You must reset your password using ALTER USER statement before executing this statement
+	so
+	SET PASSWORD = PASSWORD('new_password');
+	grant all privileges on *.* to root@'%' identified by 'A123456';
+	grant all privileges on *.* to ç”¨æˆ·å@'%' identified by 'å¯†ç ' with grant option;
+	flush privileges;
+	å¯åŠ¨ï¼šservice mysqld start
+	åœæ­¢ï¼šservice mysqld stop
+	é‡å¯ï¼šservice mysqld restart
+	é‡è½½é…ç½®ï¼šservice mysqld reload
 	grant all privileges on *.* to root@'%' identified by 'A123456';
 	flush privileges;
-ÅäÖÃmysql×Ô¶¯Æô¶¯
+é…ç½®mysqlè‡ªåŠ¨å¯åŠ¨
 	cp /usr/local/mysql/support-files/mysql.server /etc/rc.d/init.d/mysqld 
 	vim /etc/rc.d/init.d/mysqld
 		basedir=/usr/local/mysql
