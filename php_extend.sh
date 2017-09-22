@@ -1,6 +1,6 @@
 #!/bin/bash
-###### phpÀ©Õ¹°²×°
-###### ¶¨Òå±äÁ¿
+###### phpæ‰©å±•å®‰è£…
+###### å®šä¹‰å˜é‡
 server_install_log_path="/tmp/server_install.log"
 date_show_str=`date '+%Y-%m-%d %H:%M:%S'`
 phpize_path="/usr/local/php/bin/phpize"
@@ -24,13 +24,13 @@ imagick_tar_gz="imagick-3.4.3.tgz"
 imagick_dir="imagick-3.4.3" 
 imagick_name="imagick" 
 
-##### igbinary°²×°
+##### igbinaryå®‰è£…
 if [ -e "${igbinary_tar_gz}" ]
 then
-	echo "${date_show_str} ----- ${igbinary_tar_gz}Ô´ÂëÎÄ¼ş´æÔÚ -----"
-	echo "${date_show_str} ----- ${igbinary_tar_gz}Ô´ÂëÎÄ¼ş´æÔÚ -----" >> ${server_install_log_path}
-	echo "${date_show_str} ----- ½âÑ¹${igbinary_tar_gz} -----"
-	echo "${date_show_str} ----- ½âÑ¹${igbinary_tar_gz} -----" >> ${server_install_log_path}
+	echo "${date_show_str} ----- ${igbinary_tar_gz}æºç æ–‡ä»¶å­˜åœ¨ -----"
+	echo "${date_show_str} ----- ${igbinary_tar_gz}æºç æ–‡ä»¶å­˜åœ¨ -----" >> ${server_install_log_path}
+	echo "${date_show_str} ----- è§£å‹${igbinary_tar_gz} -----"
+	echo "${date_show_str} ----- è§£å‹${igbinary_tar_gz} -----" >> ${server_install_log_path}
 	tar zxvf ${igbinary_tar_gz}
 	cd ${igbinary_dir}
 	##### phpize
@@ -38,98 +38,98 @@ then
 	./configure --with-php-config=${php_config_path}
 	make && make install
 	echo -e "\nextension=igbinary.so" >> ${php_ini_path}
-	echo "${date_show_str} ----- ³É¹¦°²×°igbinary -----"
-	echo "${date_show_str} ----- ³É¹¦°²×°igbinary -----" >> ${server_install_log_path}
-	##### ·µ»ØÉÏÒ»Ä¿Â¼
-	echo "${date_show_str} ----- ·µ»ØÉÏÒ»Ä¿Â¼ -----"
-	echo "${date_show_str} ----- ·µ»ØÉÏÒ»Ä¿Â¼ -----" >> ${server_install_log_path}
+	echo "${date_show_str} ----- æˆåŠŸå®‰è£…igbinary -----"
+	echo "${date_show_str} ----- æˆåŠŸå®‰è£…igbinary -----" >> ${server_install_log_path}
+	##### è¿”å›ä¸Šä¸€ç›®å½•
+	echo "${date_show_str} ----- è¿”å›ä¸Šä¸€ç›®å½• -----"
+	echo "${date_show_str} ----- è¿”å›ä¸Šä¸€ç›®å½• -----" >> ${server_install_log_path}
 	cd ../
 else
-	echo "${date_show_str} ----- ÇëÏÈÉÏ´«${igbinary_tar_gz}Ô´Âë -----"
-	echo "${date_show_str} ----- ÇëÏÈÉÏ´«${igbinary_tar_gz} -----" >> ${server_install_log_path}
+	echo "${date_show_str} ----- è¯·å…ˆä¸Šä¼ ${igbinary_tar_gz}æºç  -----"
+	echo "${date_show_str} ----- è¯·å…ˆä¸Šä¼ ${igbinary_tar_gz} -----" >> ${server_install_log_path}
 fi
 
-##### redis_server°²×°
+##### redis_serverå®‰è£…
 if [ -e "${redis_server_tar_gz}" ]
 then
-	echo "${date_show_str} ----- ${redis_server_tar_gz}Ô´ÂëÎÄ¼ş´æÔÚ -----"
-	echo "${date_show_str} ----- ${redis_server_tar_gz}Ô´ÂëÎÄ¼ş´æÔÚ -----" >> ${server_install_log_path}
-	echo "${date_show_str} ----- ½âÑ¹${redis_server_tar_gz} -----"
-	echo "${date_show_str} ----- ½âÑ¹${redis_server_tar_gz} -----" >> ${server_install_log_path}
+	echo "${date_show_str} ----- ${redis_server_tar_gz}æºç æ–‡ä»¶å­˜åœ¨ -----"
+	echo "${date_show_str} ----- ${redis_server_tar_gz}æºç æ–‡ä»¶å­˜åœ¨ -----" >> ${server_install_log_path}
+	echo "${date_show_str} ----- è§£å‹${redis_server_tar_gz} -----"
+	echo "${date_show_str} ----- è§£å‹${redis_server_tar_gz} -----" >> ${server_install_log_path}
 	tar zxvf ${redis_server_tar_gz}
 	cp -rf ${redis_server_dir} ${redis_server_path} 
 	cd ${redis_server_path}
 	make && make install
 	cp -rf redis.conf /etc/
-	##### ½«redisÌí¼Óµ½×ÔÆô¶¯ÖĞ  
+	##### å°†redisæ·»åŠ åˆ°è‡ªå¯åŠ¨ä¸­  
 	echo "/usr/local/bin/redis-server /etc/redis.conf &" >> /etc/rc.d/rc.local
-	##### Æô¶¯redis  ÏÈ²»ÒªÆô¶¯£¬»¹ÒªĞŞ¸ÄÅäÖÃ²Å¿ÉÒÔÆô¶¯
+	##### å¯åŠ¨redis  å…ˆä¸è¦å¯åŠ¨ï¼Œè¿˜è¦ä¿®æ”¹é…ç½®æ‰å¯ä»¥å¯åŠ¨
 	##### redis-server /etc/redis.conf
-	echo "${date_show_str} ----- ³É¹¦°²×°redis_server -----"
-	echo "${date_show_str} ----- ³É¹¦°²×°redis_server -----" >> ${server_install_log_path}
-	##### ·µ»ØÉÏÒ»Ä¿Â¼
-	echo "${date_show_str} ----- ·µ»ØÉÏÒ»Ä¿Â¼ -----"
-	echo "${date_show_str} ----- ·µ»ØÉÏÒ»Ä¿Â¼ -----" >> ${server_install_log_path}
+	echo "${date_show_str} ----- æˆåŠŸå®‰è£…redis_server -----"
+	echo "${date_show_str} ----- æˆåŠŸå®‰è£…redis_server -----" >> ${server_install_log_path}
+	##### è¿”å›ä¸Šä¸€ç›®å½•
+	echo "${date_show_str} ----- è¿”å›ä¸Šä¸€ç›®å½• -----"
+	echo "${date_show_str} ----- è¿”å›ä¸Šä¸€ç›®å½• -----" >> ${server_install_log_path}
 	cd ${local_pwd}
 else
-	echo "${date_show_str} ----- ÇëÏÈÉÏ´«${redis_server_tar_gz}Ô´Âë -----"
-	echo "${date_show_str} ----- ÇëÏÈÉÏ´«${redis_server_tar_gz} -----" >> ${server_install_log_path}
+	echo "${date_show_str} ----- è¯·å…ˆä¸Šä¼ ${redis_server_tar_gz}æºç  -----"
+	echo "${date_show_str} ----- è¯·å…ˆä¸Šä¼ ${redis_server_tar_gz} -----" >> ${server_install_log_path}
 fi
 
-##### redis°²×°
+##### rediså®‰è£…
 if [ -e "${redis_tar_gz}" ]
 then
-	echo "${date_show_str} ----- ${redis_tar_gz}Ô´ÂëÎÄ¼ş´æÔÚ -----"
-	echo "${date_show_str} ----- ${redis_tar_gz}Ô´ÂëÎÄ¼ş´æÔÚ -----" >> ${server_install_log_path}
-	echo "${date_show_str} ----- ½âÑ¹${redis_tar_gz} -----"
-	echo "${date_show_str} ----- ½âÑ¹${redis_tar_gz} -----" >> ${server_install_log_path}
+	echo "${date_show_str} ----- ${redis_tar_gz}æºç æ–‡ä»¶å­˜åœ¨ -----"
+	echo "${date_show_str} ----- ${redis_tar_gz}æºç æ–‡ä»¶å­˜åœ¨ -----" >> ${server_install_log_path}
+	echo "${date_show_str} ----- è§£å‹${redis_tar_gz} -----"
+	echo "${date_show_str} ----- è§£å‹${redis_tar_gz} -----" >> ${server_install_log_path}
 	tar zxvf ${redis_tar_gz}
 	cd ${redis_dir}
 	##### phpize
 	${phpize_path}
-	./configure --with-php-config=${php_config_path}
+	./configure --enable-redis-igbinary --with-php-config=${php_config_path}
 	make && make install
 	echo -e "\nextension=redis.so" >> ${php_ini_path}
-	echo "${date_show_str} ----- ³É¹¦°²×°redis -----"
-	echo "${date_show_str} ----- ³É¹¦°²×°redis -----" >> ${server_install_log_path}
-	##### ·µ»ØÉÏÒ»Ä¿Â¼
-	echo "${date_show_str} ----- ·µ»ØÉÏÒ»Ä¿Â¼ -----"
-	echo "${date_show_str} ----- ·µ»ØÉÏÒ»Ä¿Â¼ -----" >> ${server_install_log_path}
+	echo "${date_show_str} ----- æˆåŠŸå®‰è£…redis -----"
+	echo "${date_show_str} ----- æˆåŠŸå®‰è£…redis -----" >> ${server_install_log_path}
+	##### è¿”å›ä¸Šä¸€ç›®å½•
+	echo "${date_show_str} ----- è¿”å›ä¸Šä¸€ç›®å½• -----"
+	echo "${date_show_str} ----- è¿”å›ä¸Šä¸€ç›®å½• -----" >> ${server_install_log_path}
 	cd ../
 else
-	echo "${date_show_str} ----- ÇëÏÈÉÏ´«${redis_tar_gz}Ô´Âë -----"
-	echo "${date_show_str} ----- ÇëÏÈÉÏ´«${redis_tar_gz} -----" >> ${server_install_log_path}
+	echo "${date_show_str} ----- è¯·å…ˆä¸Šä¼ ${redis_tar_gz}æºç  -----"
+	echo "${date_show_str} ----- è¯·å…ˆä¸Šä¼ ${redis_tar_gz} -----" >> ${server_install_log_path}
 fi
 
-##### ImageMagick·şÎñ°²×°
+##### ImageMagickæœåŠ¡å®‰è£…
 if [ -e "${ImageMagick_tar_gz}" ]
 then
-	echo "${date_show_str} ----- ${ImageMagick_tar_gz}Ô´ÂëÎÄ¼ş´æÔÚ -----"
-	echo "${date_show_str} ----- ${ImageMagick_tar_gz}Ô´ÂëÎÄ¼ş´æÔÚ -----" >> ${server_install_log_path}
-	echo "${date_show_str} ----- ½âÑ¹${ImageMagick_tar_gz} -----"
-	echo "${date_show_str} ----- ½âÑ¹${ImageMagick_tar_gz} -----" >> ${server_install_log_path}
+	echo "${date_show_str} ----- ${ImageMagick_tar_gz}æºç æ–‡ä»¶å­˜åœ¨ -----"
+	echo "${date_show_str} ----- ${ImageMagick_tar_gz}æºç æ–‡ä»¶å­˜åœ¨ -----" >> ${server_install_log_path}
+	echo "${date_show_str} ----- è§£å‹${ImageMagick_tar_gz} -----"
+	echo "${date_show_str} ----- è§£å‹${ImageMagick_tar_gz} -----" >> ${server_install_log_path}
 	tar zxvf ${ImageMagick_tar_gz}
 	cd ${ImageMagick_dir}
 	./configure --prefix=/usr/local/${ImageMagick_name}
 	make && make install
-	echo "${date_show_str} ----- ³É¹¦°²×°ImageMagick·şÎñ -----"
-	echo "${date_show_str} ----- ³É¹¦°²×°ImageMagick·şÎñ -----" >> ${server_install_log_path}
-	##### ·µ»ØÉÏÒ»Ä¿Â¼
-	echo "${date_show_str} ----- ·µ»ØÉÏÒ»Ä¿Â¼ -----"
-	echo "${date_show_str} ----- ·µ»ØÉÏÒ»Ä¿Â¼ -----" >> ${server_install_log_path}
+	echo "${date_show_str} ----- æˆåŠŸå®‰è£…ImageMagickæœåŠ¡ -----"
+	echo "${date_show_str} ----- æˆåŠŸå®‰è£…ImageMagickæœåŠ¡ -----" >> ${server_install_log_path}
+	##### è¿”å›ä¸Šä¸€ç›®å½•
+	echo "${date_show_str} ----- è¿”å›ä¸Šä¸€ç›®å½• -----"
+	echo "${date_show_str} ----- è¿”å›ä¸Šä¸€ç›®å½• -----" >> ${server_install_log_path}
 	cd ../
 else
-	echo "${date_show_str} ----- ÇëÏÈÉÏ´«${ImageMagick_tar_gz}Ô´Âë -----"
-	echo "${date_show_str} ----- ÇëÏÈÉÏ´«${ImageMagick_tar_gz} -----" >> ${server_install_log_path}
+	echo "${date_show_str} ----- è¯·å…ˆä¸Šä¼ ${ImageMagick_tar_gz}æºç  -----"
+	echo "${date_show_str} ----- è¯·å…ˆä¸Šä¼ ${ImageMagick_tar_gz} -----" >> ${server_install_log_path}
 fi
 
-##### imagick°²×°
+##### imagickå®‰è£…
 if [ -e "${imagick_tar_gz}" ]
 then
-	echo "${date_show_str} ----- ${imagick_tar_gz}Ô´ÂëÎÄ¼ş´æÔÚ -----"
-	echo "${date_show_str} ----- ${imagick_tar_gz}Ô´ÂëÎÄ¼ş´æÔÚ -----" >> ${server_install_log_path}
-	echo "${date_show_str} ----- ½âÑ¹${imagick_tar_gz} -----"
-	echo "${date_show_str} ----- ½âÑ¹${imagick_tar_gz} -----" >> ${server_install_log_path}
+	echo "${date_show_str} ----- ${imagick_tar_gz}æºç æ–‡ä»¶å­˜åœ¨ -----"
+	echo "${date_show_str} ----- ${imagick_tar_gz}æºç æ–‡ä»¶å­˜åœ¨ -----" >> ${server_install_log_path}
+	echo "${date_show_str} ----- è§£å‹${imagick_tar_gz} -----"
+	echo "${date_show_str} ----- è§£å‹${imagick_tar_gz} -----" >> ${server_install_log_path}
 	tar zxvf ${imagick_tar_gz}
 	cd ${imagick_dir}
 	##### phpize
@@ -137,18 +137,18 @@ then
 	./configure --with-imagick=/usr/local/${ImageMagick_name}/ --with-php-config=${php_config_path}
 	make && make install
 	echo -e "\nextension=imagick.so" >> ${php_ini_path}
-	echo "${date_show_str} ----- ³É¹¦°²×°imagick -----"
-	echo "${date_show_str} ----- ³É¹¦°²×°imagick -----" >> ${server_install_log_path}
-	##### ·µ»ØÉÏÒ»Ä¿Â¼
-	echo "${date_show_str} ----- ·µ»ØÉÏÒ»Ä¿Â¼ -----"
-	echo "${date_show_str} ----- ·µ»ØÉÏÒ»Ä¿Â¼ -----" >> ${server_install_log_path}
+	echo "${date_show_str} ----- æˆåŠŸå®‰è£…imagick -----"
+	echo "${date_show_str} ----- æˆåŠŸå®‰è£…imagick -----" >> ${server_install_log_path}
+	##### è¿”å›ä¸Šä¸€ç›®å½•
+	echo "${date_show_str} ----- è¿”å›ä¸Šä¸€ç›®å½• -----"
+	echo "${date_show_str} ----- è¿”å›ä¸Šä¸€ç›®å½• -----" >> ${server_install_log_path}
 	cd ../
 else
-	echo "${date_show_str} ----- ÇëÏÈÉÏ´«${imagick_tar_gz}Ô´Âë -----"
-	echo "${date_show_str} ----- ÇëÏÈÉÏ´«${imagick_tar_gz} -----" >> ${server_install_log_path}
+	echo "${date_show_str} ----- è¯·å…ˆä¸Šä¼ ${imagick_tar_gz}æºç  -----"
+	echo "${date_show_str} ----- è¯·å…ˆä¸Šä¼ ${imagick_tar_gz} -----" >> ${server_install_log_path}
 fi
 
-##### killµô½ø³Ì
+##### killæ‰è¿›ç¨‹
 pkill -9 -f "php-fpm" && /etc/init.d/php-fpm
-##### ÖØĞÂÆô¶¯
+##### é‡æ–°å¯åŠ¨
 ##### /etc/init.d/php-fpm
