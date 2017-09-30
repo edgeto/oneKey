@@ -91,7 +91,8 @@ install_php(){
 			--enable-sockets \
 			--enable-sysvsem \
 			--enable-xml \
-			--enable-zip
+			--enable-zip \
+			--with-jpeg-dir
 			##### 执行安装
 			echo "${date_show_str} ----- 执行安装 -----"
 			echo "${date_show_str} ----- 执行安装 -----" >> ${server_install_log_path}
