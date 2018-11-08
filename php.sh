@@ -104,7 +104,8 @@ install_php(){
 			cp -rf ${install_php_path}/${php_name}/etc/php-fpm.conf.default ${install_php_path}/${php_name}/etc/php-fpm.conf
 			##### cp /usr/local/php/etc/php-fpm.d/www.conf.default /usr/local/php/etc/php-fpm.d/www.conf
 			##### 开机启动
-			cp -Rf ./sapi/fpm/php-fpm /etc/init.d/php-fpm
+			#### cp -Rf ./sapi/fpm/php-fpm /etc/init.d/php-fpm
+			cp sapi/fpm/init.d.php-fpm /etc/init.d/php-fpm
 			echo "${date_show_str} ----- 成功安装php -----"
 			echo "${date_show_str} ----- 成功安装php -----" >> ${server_install_log_path}
 			##### 设置变量环境
