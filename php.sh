@@ -126,6 +126,7 @@ install_php(){
 			##### opcache 配置
 			cat ${php_opcache_path} >> ${install_php_path}/${php_name}/lib/php.ini
 			##### 启动
+			chmod +x /etc/init.d/php-fpm 
 			echo "${date_show_str} ----- 启动php -----"
 			echo "${date_show_str} ----- 启动php -----" >> ${server_install_log_path}
 			/etc/init.d/php-fpm
